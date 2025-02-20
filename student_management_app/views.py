@@ -45,3 +45,5 @@ def LogoutUser(request):
     logout(request)
     return HttpResponseRedirect("/")
 
+def admin_home(request):
+    return render(request, "admin_home.html")
