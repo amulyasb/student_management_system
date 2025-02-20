@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from student_management_app import views
+from student_management_app import views, HodViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,5 @@ urlpatterns = [
     path('doLogin',views.doLogin, name="do_login"),
     path('get_user_details',views.GetUserDetails, name="get_user_details"),
     path('logout_user',views.LogoutUser, name="logout_user"),
-    path('admin_home',views.admin_home, name="admin_home"),
+    path('admin_home',HodViews.admin_home, name="admin_home"),
 ]
