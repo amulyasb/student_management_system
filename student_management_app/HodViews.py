@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from student_management_app.models import CustomUser, Staffs, Courses, Subjects, Students
@@ -9,10 +9,10 @@ from student_management_app.models import CustomUser, Staffs, Courses, Subjects,
 
 
 def admin_home(request):
-    return render(request, "hod_template/home_content.html")
+    return render(request,"hod_template/home_content.html")
 
 def add_staff(request):
-    return render(request, "hod_template/add_staff_template.html")
+    return render(request,"hod_template/add_staff_template.html")
 
 def add_staff_save(request):
     if request.method!="POST":
@@ -33,3 +33,8 @@ def add_staff_save(request):
         except:
             messages.error(request,"Failed to Add Staff")
             return HttpResponseRedirect(reverse("add_staff"))
+        
+
+def manage_staff(request):
+    staffs=Staffs.objects.all()
+    return render(request,"hod_template/manage_staff_template.html",{"staffs":staffs})
