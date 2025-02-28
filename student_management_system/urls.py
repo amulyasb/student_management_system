@@ -30,7 +30,7 @@ urlpatterns = [
     path('logout_user',views.LogoutUser, name="logout_user"),
     path('admin_home',HodViews.admin_home, name="admin_home"),
 
-    # admin url
+    # staff url
     path('add_staff',HodViews.add_staff, name="add_staff"),
     path('manage_staff', HodViews.manage_staff,name="manage_staff"),
     path('add_staff_save',HodViews.add_staff_save,name="add_staff_save"),
@@ -42,7 +42,12 @@ urlpatterns = [
     path('add_course_save', HodViews.add_course_save,name="add_course_save"),
     path('manage_course', HodViews.manage_course,name="manage_course"),
     path('edit_course/<str:course_id>', HodViews.edit_course,name="edit_course"),
-    path('edit_course_save', HodViews.edit_course_save,name="edit_course_save"),
+
+    # student url
+    path('add_student', HodViews.add_student,name="add_student"),
+    path('add_student_save', HodViews.add_student_save,name="add_student_save"),
+
+
 
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
