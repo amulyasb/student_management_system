@@ -11,6 +11,8 @@ from student_management_app.models import CustomUser, Staffs, Courses, Subjects,
 def admin_home(request):
     return render(request,"hod_template/home_content.html")
 
+
+# staff management
 def add_staff(request):
     return render(request,"hod_template/add_staff_template.html")
 
@@ -34,7 +36,6 @@ def add_staff_save(request):
             messages.error(request,"Failed to Add Staff")
             return HttpResponseRedirect(reverse("add_staff"))
         
-
 def manage_staff(request):
     staffs=Staffs.objects.all()
     return render(request,"hod_template/manage_staff_template.html",{"staffs":staffs})
@@ -72,7 +73,8 @@ def edit_staff_save(request):
             messages.error(request,"Failed to Edit Staff")
             return HttpResponseRedirect(reverse("edit_staff",kwargs={"staff_id":staff_id}))
         
-        
+
+# course management
 def add_course(request):
     return render(request,"hod_template/add_course_template.html")
 
@@ -93,3 +95,24 @@ def add_course_save(request):
 def manage_course(request):
     courses=Courses.objects.all()
     return render(request,"hod_template/manage_course_template.html",{"courses":courses})
+
+def edit_course(request,course_id):
+    course=Courses.objects.get(id=course_id)
+    return render(request,"hod_template/edit_course_template.html",{"course":course,"id":course_id})
+
+def edit_course_save(request):
+    if request.method!="POST":
+        return HttpResponse("<h2>Method Not Allowed</h2>")
+    else:
+        course_id=request.POST.get("course_id")
+        course_name=request.POST.get("course")
+
+        try:
+            course=Courses.objects.get(id=course_id)
+            course.course_name=course_name
+            course.save()
+            messages.success(request,"Successfully Edited Course")
+            return HttpResponseRedirect(reverse("edit_course",kwargs={"course_id":course_id}))
+        except:
+            messages.error(request,"Failed to Edit Course")
+            return HttpResponseRedirect(reverse("edit_course",kwargs={"course_id":course_id}))

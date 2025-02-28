@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from student_management_app import views, HodViews
+from django.conf.urls.static import static
+from student_management_system import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,14 +29,20 @@ urlpatterns = [
     path('get_user_details',views.GetUserDetails, name="get_user_details"),
     path('logout_user',views.LogoutUser, name="logout_user"),
     path('admin_home',HodViews.admin_home, name="admin_home"),
+
+    # admin url
     path('add_staff',HodViews.add_staff, name="add_staff"),
     path('manage_staff', HodViews.manage_staff,name="manage_staff"),
     path('add_staff_save',HodViews.add_staff_save,name="add_staff_save"),
     path('edit_staff/<str:staff_id>', HodViews.edit_staff,name="edit_staff"),
     path('edit_staff_save', HodViews.edit_staff_save,name="edit_staff_save"),
+
+    # course url
     path('add_course', HodViews.add_course,name="add_course"),
     path('add_course_save', HodViews.add_course_save,name="add_course_save"),
     path('manage_course', HodViews.manage_course,name="manage_course"),
+    path('edit_course/<str:course_id>', HodViews.edit_course,name="edit_course"),
+    path('edit_course_save', HodViews.edit_course_save,name="edit_course_save"),
 
 
-]
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
