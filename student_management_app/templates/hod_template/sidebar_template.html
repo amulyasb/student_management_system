@@ -2,7 +2,7 @@
   <aside class="main-sidebar bg-gradient-gray sidebar-light-green font-weight-bold elevation-4">
     <!-- Brand Logo -->
     <a href="{% url 'demo' %}" class="brand-link">
-      <span class="brand-text font-weight-bold">Management System</span>
+      <span class="brand-text align-items-center font-weight-bold" style="color: white;">Management System</span>
     </a>
 
     <!-- Sidebar -->
@@ -13,20 +13,19 @@
           <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ user.username }}</a>
+          <a href="#" class="d-block" style="color: white;">{{ user.username }}</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+          <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
           <li class="nav-item">
             {% url 'add_staff' as add_staff %}
             <a href="{{ add_staff }}" class="nav-link {% if request.path == add_staff %} active {% endif %}">
               <i class="nav-icon fas fa-th"></i>
-              <p>
+              <p style="color: white;">
                 Add Staff
               </p>
             </a>
@@ -36,7 +35,7 @@
             {% url 'edit_staff' staff_id=id as edit_staff %}
             <a href="{% url 'manage_staff' %}" class="nav-link {% if request.path == manage_staff %} active {% endif %} {% if request.path == edit_staff %} active {% endif %}">
               <i class="nav-icon fas fa-th"></i>
-              <p>
+              <p style="color: white;">
                 Manage Staff
               </p>
             </a>
@@ -45,7 +44,7 @@
             {% url 'add_course' as add_course %}
             <a href="{% url 'add_course' %}" class="nav-link {% if request.path == add_course %} active {% endif %}">
               <i class="nav-icon fas fa-th"></i>
-              <p>
+              <p style="color: white;">
                 Add Course
               </p>
             </a>
@@ -55,7 +54,7 @@
               {% url 'edit_course' course_id=id as edit_course %}
             <a href="{% url 'manage_course' %}" class="nav-link {% if request.path == manage_course %} active {% endif %} {% if request.path == edit_course %} active {% endif %}">
               <i class="nav-icon fas fa-th"></i>
-              <p>
+              <p style="color: white;">
                 Manage Course
               </p>
             </a>
@@ -64,7 +63,7 @@
             {% url 'add_student' as add_student %}
           <a href="{% url 'add_student' %}" class="nav-link {% if request.path == add_student %} active {% endif %}">
             <i class="nav-icon fas fa-th"></i>
-            <p>
+            <p style="color: white;">
               Add Student
             </p>
           </a>

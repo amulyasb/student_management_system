@@ -8,6 +8,7 @@ from student_management_app.models import CustomUser, Staffs, Courses, Subjects,
 
 
 
+
 def admin_home(request):
     return render(request,"hod_template/home_content.html")
 
@@ -40,6 +41,11 @@ def manage_staff(request):
     staffs=Staffs.objects.all()
     return render(request,"hod_template/manage_staff_template.html",{"staffs":staffs})
 
+def delete_staff(request,staff_id):
+    staff=CustomUser.objects.get(id=staff_id)
+    staff.delete()
+    messages.success(request,"Successfully Deleted Staff")
+    return HttpResponseRedirect(reverse("manage_staff"))
 
 def edit_staff(request,staff_id):
     staff=Staffs.objects.get(admin=staff_id)
@@ -95,6 +101,16 @@ def add_course_save(request):
 def manage_course(request):
     courses=Courses.objects.all()
     return render(request,"hod_template/manage_course_template.html",{"courses":courses})
+
+def delete_course(request,course_id):
+    course=Courses.objects.get(id=course_id)
+    try:
+        course.delete()
+        messages.success(request, "Successfully Deleted Course")
+    except Exception as e:
+        messages.error(request, f"Error deleting course: {e}")
+
+    return HttpResponseRedirect(reverse("manage_course"))
 
 def edit_course(request,course_id):
     course=Courses.objects.get(id=course_id)
