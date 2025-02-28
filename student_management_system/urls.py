@@ -29,4 +29,6 @@ urlpatterns = [
     path('add_staff',HodViews.add_staff, name="add_staff"),
     path('manage_staff', HodViews.manage_staff,name="manage_staff"),
     path('add_staff_save',HodViews.add_staff_save,name="add_staff_save"),
+    path('edit_staff/<str:staff_id>', HodViews.edit_staff,name="edit_staff"),
+    path('edit_staff_save', HodViews.edit_staff_save,name="edit_staff_save"),
 ]
