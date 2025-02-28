@@ -43,6 +43,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            {% url 'add_course' as add_course %}
+            <a href="{% url 'add_course' %}" class="nav-link {% if request.path == add_course %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add Course
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
