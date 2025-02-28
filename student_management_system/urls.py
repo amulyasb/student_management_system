@@ -33,5 +33,7 @@ urlpatterns = [
     path('edit_staff_save', HodViews.edit_staff_save,name="edit_staff_save"),
     path('add_course', HodViews.add_course,name="add_course"),
     path('add_course_save', HodViews.add_course_save,name="add_course_save"),
+    path('manage_course', HodViews.manage_course,name="manage_course"),
+
 
 ]
