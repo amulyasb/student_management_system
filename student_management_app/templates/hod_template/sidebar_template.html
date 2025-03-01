@@ -73,7 +73,7 @@
           {% url 'edit_student' student_id=id as edit_student %}
         <a href="{% url 'manage_student' %}" class="nav-link {% if request.path == manage_student %} active {% endif %} {% if request.path == edit_student %} active {% endif %}">
           <i class="nav-icon fas fa-th"></i>
-          <p>
+          <p style="color: white;">
             Manage Students
           </p>
         </a>
