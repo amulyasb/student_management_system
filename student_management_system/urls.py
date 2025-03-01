@@ -53,6 +53,10 @@ urlpatterns = [
     path('edit_student/<str:student_id>', HodViews.edit_student,name="edit_student"),
     path('edit_student_save', HodViews.edit_student_save,name="edit_student_save"),
 
+    # subject url
+    path('add_subject', HodViews.add_subject,name="add_subject"),
+    path('add_subject_save', HodViews.add_subject_save,name="add_subject_save"),
+
 
 
 

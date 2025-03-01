@@ -42,6 +42,9 @@ class Subjects(models.Model):
     updated_at=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
 
+    def __str__(self):
+        return self.subject_name
+
 class Students(models.Model):
     id=models.AutoField(primary_key=True)
     admin=models.OneToOneField(CustomUser,on_delete=models.CASCADE)
