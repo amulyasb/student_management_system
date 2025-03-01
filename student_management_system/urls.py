@@ -57,6 +57,8 @@ urlpatterns = [
     path('add_subject', HodViews.add_subject,name="add_subject"),
     path('add_subject_save', HodViews.add_subject_save,name="add_subject_save"),
     path('manage_subject', HodViews.manage_subject,name="manage_subject"),
+    path('edit_subject/<str:subject_id>', HodViews.edit_subject,name="edit_subject"),
+    path('edit_subject_save', HodViews.edit_subject_save,name="edit_subject_save"),
 
 
 
