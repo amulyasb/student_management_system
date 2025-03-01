@@ -283,3 +283,7 @@ def add_subject_save(request):
         except:
             messages.error(request,"Failed to Add Subject")
             return HttpResponseRedirect(reverse("add_subject"))
+        
+def manage_subject(request):
+    subjects=Subjects.objects.all()
+    return render(request,"hod_template/manage_subject_template.html",{"subjects":subjects})

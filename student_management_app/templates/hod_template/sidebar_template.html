@@ -82,8 +82,18 @@
         {% url 'add_subject' as add_subject %}
         <a href="{% url 'add_subject' %}" class="nav-link {% if request.path == add_subject %} active {% endif %}">
           <i class="nav-icon fas fa-th"></i>
-          <p>
+          <p style="color: white;">
             Add Subject
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        {% url 'manage_subject' as manage_subject %}
+        {% url 'edit_subject' subject_id=id as edit_subject %}
+        <a href="{% url 'manage_subject' %}" class="nav-link {% if request.path == manage_subject %} active {% endif %} {% if request.path == edit_subject %} active {% endif %} ">
+          <i class="nav-icon fas fa-th"></i>
+          <p style="color: white;">
+            Manage Subject
           </p>
         </a>
       </li>
