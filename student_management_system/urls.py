@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from student_management_app import views, HodViews
+from student_management_app import StaffViews, StudentViews, views, HodViews
 from django.conf.urls.static import static
 from student_management_system import settings
 
@@ -61,6 +61,10 @@ urlpatterns = [
     path('edit_subject_save', HodViews.edit_subject_save,name="edit_subject_save"),
 
 
+#Staff URL Path
+    path('staff_home', StaffViews.staff_home, name="staff_home"),
+#Student URL Path:
+    path('student_home', StudentViews.student_home, name="student_home"),
 
 
 

@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login
 from django.contrib.auth import authenticate, logout
 from django.http import HttpResponse
+from django.urls import reverse
 from student_management_app import EmailBackEnd
 from django.shortcuts import render, redirect
 
@@ -26,12 +27,14 @@ def doLogin(request):
 
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect("/admin_home")
-
-        else:
-            messages.error(request, "Invalid Login Details")
-            return redirect("/")  # Ensure your template supports messages
-
+            if user.user_type == "1":
+                return HttpResponseRedirect('admin_home')
+            elif user.user_type == "2":
+                return HttpResponseRedirect(reverse('staff_home'))
+            elif user.user_type == "3":
+                return HttpResponseRedirect(reverse('student_home'))
+            else:
+                return HttpResponse("Invalid User")
 
 
 def GetUserDetails(request):
